@@ -114,7 +114,7 @@ ASGI_APPLICATION = 'interview_bot.asgi.application'
 #         },
 #     },
 # }
-ALLOWED_HOSTS = []
+
 # CELERY_BROKER_URL = "redis://localhost:6380"
 # CELERY_RESULT_BACKEND = "redis://localhost:6380"
 # CELERY_ACCEPT_CONTENT = ['application/json']
