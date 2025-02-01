@@ -1,8 +1,8 @@
 import os
 import sys
-
-# Add the project root to the Python path
 from pathlib import Path
+
+# Add the project root directory to Python path
 project_root = str(Path(__file__).resolve().parent.parent.parent)
 sys.path.append(project_root)
 

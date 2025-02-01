@@ -30,10 +30,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-)d$x3zh8y#qln!yc2wt4-3m29_utd$^rfylqji%ley!ls8(-k4'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv('ENVIRONMENT', 'Production').lower() == 'local'
 
 ALLOWED_HOSTS = ['*']
-CSRF_TRUSTED_ORIGINS = ['*']
+CSRF_TRUSTED_ORIGINS = ['htpps://interxai.up.railway.app']
 
 SITE_ID=2
 # Application definition
@@ -68,6 +68,7 @@ INSTALLED_APPS = [
 #         "AUTH_PARAMS" : { "access_type" : "online"}
 #     }
 # }
+
 AUTHENTICATION_BACKENDS = (
     'social_core.backends.google.GoogleOAuth2',
     'django.contrib.auth.backends.ModelBackend',
