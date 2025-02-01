@@ -27,4 +27,5 @@ jobs:
         pip install -r interview_bot/requirements.txt
     - name: Run Tests
       run: |
-        python interview_bot/manage.py test
+        cd interview_bot
+        python manage.py test
