@@ -43,22 +43,27 @@ INSTALLED_APPS = [
     'users',
     'groupchat',
     'simpleinterview',
-    'django.contrib.sites',
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-    'allauth.socialaccount.providers.google'
+    'social_django',
+    # 'django.contrib.sites',
+    # 'allauth',
+    # 'allauth.account',
+    # 'allauth.socialaccount',
+    # 'allauth.socialaccount.providers.google'
 ]
 
-SOCIAL_ACCOUNT_PROVIDERS = {
-    "google" : {
-        "SCOPE" :[
-            "profile",
-            "email"
-        ],
-        "AUTH_PARAMS" : { "access_type" : "online"}
-    }
-}
+# SOCIAL_ACCOUNT_PROVIDERS = {
+#     "google" : {
+#         "SCOPE" :[
+#             "profile",
+#             "email"
+#         ],
+#         "AUTH_PARAMS" : { "access_type" : "online"}
+#     }
+# }
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.google.GoogleOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
 MEDIA_URL = '/media/'  # URL to access media files
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MIDDLEWARE = [
@@ -70,7 +75,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django_htmx.middleware.HtmxMiddleware',
-    'allauth.account.middleware.AccountMiddleware',
+    # 'allauth.account.middleware.AccountMiddleware',
 ]
 
 ROOT_URLCONF = 'interview_bot.urls'
@@ -179,19 +184,26 @@ STATICFILES_DIRS = [
     BASE_DIR / "static",  # Optional: Additional directories for static files
 ]
 STATIC_ROOT = BASE_DIR / "staticfiles"  # Directory where static files are collected
-AUTHENTICATION_BACKENDS = {
-    "django.contrib.auth.backends.ModelBackend",
-    "allauth.account.auth_backends.AuthenticationBackend"
-}
-LOGIN_REDIRECT_URL="/"
-LOGOUT_REDIRECT_URL="/"
+# AUTHENTICATION_BACKENDS = {
+#     "django.contrib.auth.backends.ModelBackend",
+#     "allauth.account.auth_backends.AuthenticationBackend"
+# }
+# LOGIN_REDIRECT_URL="/"
+# LOGOUT_REDIRECT_URL="/"
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'  # or your email provider
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'tester7760775061@gmail.com'
 EMAIL_HOST_PASSWORD = 'mamb mymj uuus gcbh'
-
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_URL = 'logout'
+LOGOUT_REDIRECT_URL = 'login'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = [
+    'https://www.googleapis.com/auth/userinfo.email',
+    'https://www.googleapis.com/auth/userinfo.profile',
+]
 CELERY_BROKER_URL = "redis://127.0.0.1:6380"
 CELERY_RESULT_BACKEND = "redis://127.0.0.1:6380"
 CELERY_ACCEPT_CONTENT = ['application/json']
@@ -199,3 +211,5 @@ CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TASK_SELERLIZER = 'json'
 CELERY_RESULT_EXPIRES = 60 * 60 * 24
 broker_connection_retry_on_startup = True
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '254934736254-uucfj85tajfd5da10o00ocbn9g5v3jfl.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'

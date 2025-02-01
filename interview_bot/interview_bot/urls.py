@@ -23,9 +23,10 @@ urlpatterns = [
     # Your other URL patterns
     path('admin/', admin.site.urls),
     path('reg/', include('users.urls')),
+path('', include('social_django.urls', namespace='social')),
     path('',include('bot.urls')),
     path('gc/',include('groupchat.urls')),
-    path("accounts/", include("allauth.urls")),
+    # path("accounts/", include("allauth.urls")),
     path('interview_simulator/',include('simpleinterview.urls')),
 ]
 

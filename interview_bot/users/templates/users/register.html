@@ -1,4 +1,4 @@
-{% load socialaccount %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -150,6 +150,7 @@
             <p class="mb-0">Already have an account?
                 <a href="{% url 'login' %}" class="text-primary fw-bold">Sign In</a>
             </p>
+            <a href="{% url 'social:begin' 'google-oauth2' %}">Login with Google</a>
         </div>
     </div>
 </body>
