@@ -51,7 +51,6 @@ INSTALLED_APPS = [
     'users',
     'groupchat',
     'simpleinterview',
-    'social_django',
     # 'django.contrib.sites',
     # 'allauth',
     # 'allauth.account',
@@ -68,10 +67,7 @@ INSTALLED_APPS = [
 #         "AUTH_PARAMS" : { "access_type" : "online"}
 #     }
 # }
-AUTHENTICATION_BACKENDS = (
-    'social_core.backends.google.GoogleOAuth2',
-    'django.contrib.auth.backends.ModelBackend',
-)
+
 MEDIA_URL = '/media/'  # URL to access media files
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MIDDLEWARE = [
@@ -114,7 +110,7 @@ ASGI_APPLICATION = 'interview_bot.asgi.application'
 #         },
 #     },
 # }
-ALLOWED_HOSTS = []
+
 # CELERY_BROKER_URL = "redis://localhost:6380"
 # CELERY_RESULT_BACKEND = "redis://localhost:6380"
 # CELERY_ACCEPT_CONTENT = ['application/json']
@@ -125,12 +121,12 @@ ALLOWED_HOSTS = []
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.mysql',
@@ -217,14 +213,7 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'tester7760775061@gmail.com'
 EMAIL_HOST_PASSWORD = 'mamb mymj uuus gcbh'
-LOGIN_URL = 'login'
-LOGIN_REDIRECT_URL = 'home'
-LOGOUT_URL = 'logout'
-LOGOUT_REDIRECT_URL = 'login'
-SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = [
-    'https://www.googleapis.com/auth/userinfo.email',
-    'https://www.googleapis.com/auth/userinfo.profile',
-]
+
 CELERY_BROKER_URL = "redis://127.0.0.1:6380"
 CELERY_RESULT_BACKEND = "redis://127.0.0.1:6380"
 CELERY_ACCEPT_CONTENT = ['application/json']
@@ -232,8 +221,7 @@ CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TASK_SELERLIZER = 'json'
 CELERY_RESULT_EXPIRES = 60 * 60 * 24
 broker_connection_retry_on_startup = True
-# SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '254934736254-uucfj85tajfd5da10o00ocbn9g5v3jfl.apps.googleusercontent.com'
-# SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'
+
 
 POSTGRES_LOCALLY = False
 ENVIRONMENT = os.getenv('ENVIRONMENT', 'development')
